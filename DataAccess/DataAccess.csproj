@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Entities\Author.cs" />
-    <Compile Remove="Entities\Book.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Entities\Book.cs" />
-    <Content Include="Entities\Author.cs" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
   </ItemGroup>
 
 </Project>

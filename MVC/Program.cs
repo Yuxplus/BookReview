@@ -1,8 +1,21 @@
+using Business.Services;
+using DataAccess.Contexts;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+#region IoC Container
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<Db>(options => options.UseSqlServer(connectionString));
+
+builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IBooksService, BooksService>();
+#endregion
+
+
+//builder.Services.AddDbContext(option => option.UseSqlServer)
+
 
 // add-migration v1
 // update-database
