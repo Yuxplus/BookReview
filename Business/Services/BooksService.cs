@@ -1,4 +1,5 @@
 ﻿using Business.Models;
+using Business.Services.Bases;
 using DataAccess.Contexts;
 using DataAccess.Entities;
 using DataAccess.Results;
@@ -20,23 +21,28 @@ namespace Business.Services
         Result Delete(int id);
     }
 
-    public class BooksService : IBooksService
+    public class BooksService : ServiceBase , IBooksService
     {
-        private readonly Db _db;
-        public BooksService(Db db)
+		public BooksService(Db db) : base(db)
+		{
+		}
+
+		public IQueryable<BookModel> Query()
         {
-            _db = db;
-        }
-        public IQueryable<BookModel> Query()
+            return _db.Books
+        .Include(o => o.BookOwners)
+        .Include(o => o.Author)
+        .OrderBy(s => s.Title)
+        .Select(s => new BookModel
         {
-            return _db.Books.OrderBy(s => s.Title).Select(s => new BookModel()
-            {
-                Id = s.Id,
-                Title = s.Title,
-                PublishedYear = s.PublishedYear,
-                Price = s.Price,
-                AuthorId = s.AuthorId,
-                });
+            Id = s.Id,
+            Title = s.Title,
+            PublishedYear = s.PublishedYear,
+            Price = s.Price,
+            AuthorId = s.AuthorId,
+            AuthorName = s.Author.Name,  // Include the author's name
+            Guid = s.Guid
+        });
         }
         public Result Add(BookModel model)
         {

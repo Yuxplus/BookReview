@@ -4,6 +4,7 @@ using DataAccess.Entities;
 using DataAccess.Results.Bases;
 using DataAccess.Results;
 using Microsoft.EntityFrameworkCore;
+using Business.Services.Bases;
 
 namespace Business.Services
 {
@@ -14,16 +15,11 @@ namespace Business.Services
         Result Update(AuthorModel model);
         Result Delete(int id);
     }
-    public class AuthorService : IAuthorService
+    public class AuthorService : ServiceBase , IAuthorService
     {
-        private readonly Db _db;
-
-        public AuthorService(Db db)
+        public AuthorService(Db db) : base(db)
         {
-            _db = db;
         }
-
-
 
         public IQueryable<AuthorModel> Query()
         {

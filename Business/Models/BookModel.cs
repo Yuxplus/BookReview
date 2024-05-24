@@ -21,6 +21,7 @@ namespace Business.Models
         public int AuthorId { get; set; }
 
         //public required Author Author { get; set; }
+        public string AuthorName { get; set; }
         #endregion
     }
 }

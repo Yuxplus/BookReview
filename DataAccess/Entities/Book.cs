@@ -20,5 +20,7 @@ namespace DataAccess.Entities
         // one to many kısmı burası one kısmı
         public int AuthorId { get; set; }
         public Author Author { get; set; }
+
+        public List<BookOwner> BookOwners { get; set; }
     }
 }

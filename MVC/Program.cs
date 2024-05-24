@@ -9,8 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<Db>(options => options.UseSqlServer(connectionString));
 
+
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IBooksService, BooksService>();
+builder.Services.AddScoped<IPublisherService, PublisherService>();
 #endregion
 
 

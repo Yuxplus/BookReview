@@ -1,0 +1,53 @@
+﻿@model PublisherModel
+
+
+<h4>Publisher</h4>
+<hr />
+<dl class="row">
+    <dt class="col-2">
+        @Html.DisplayNameFor(model => model.Name)
+    </dt>
+    <dd class="col-10">
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+</dl>
+<dl class="row">
+    <dt class="col-2">
+        @Html.DisplayNameFor(model => model.Location)
+    </dt>
+    <dd class="col-10">
+        @Html.DisplayFor(model => model.Location)
+    </dd>
+</dl>
+<dl class="row">
+    <dt class="col-2">
+        @Html.DisplayNameFor(model => model.EstablishmentDateOutput)
+    </dt>
+    <dd class="col-10">
+        @Html.DisplayFor(model => model.EstablishmentDateOutput)
+    </dd>
+</dl>
+<dl class="row">
+    <dt class="col-2">
+        @Html.DisplayNameFor(model => model.IsActiveOutput)
+    </dt>
+    <dd class="col-10">
+        @Html.DisplayFor(model => model.IsActiveOutput)
+    </dd>
+</dl>
+<dl class="row">
+    <dt class="col-2">
+        @Html.DisplayNameFor(model => model.ScoreOutput)
+    </dt>
+    <dd class="col-10">
+        @Html.DisplayFor(model => model.ScoreOutput)
+    </dd>
+</dl>
+<dl class="row">
+    <dt class="col-2">
+        @Html.DisplayNameFor(model => model.BookNamesOutput)
+    </dt>
+    <dd class="col-10">
+        @Html.Raw(Model.BookNamesOutput)
+    </dd>
+</dl>

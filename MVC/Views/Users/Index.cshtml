@@ -1,16 +1,12 @@
-﻿@model IEnumerable<BookModel>
+﻿@model IEnumerable<UserModel>
 @*Generated from Custom Template.*@
 @*Model namespace using directive should be added to _ViewImports.cshtml.*@
 
 @{
-    ViewData["Title"] = "Books";
+    ViewData["Title"] = "Index";
 }
 
 <h1>@ViewData["Title"]</h1>
-@if (TempData["Message"] != null)
-{
-    <p class="bg-info text-black">@TempData["Message"]</p>
-}
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -19,16 +15,22 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                @Html.DisplayNameFor(model => model.UserName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PublishedYear)
+                @Html.DisplayNameFor(model => model.Password)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Price)
+                @Html.DisplayNameFor(model => model.IsActive)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AuthorName)
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Guid)
             </th>
             <th></th>
         </tr>
@@ -37,16 +39,22 @@
 		@foreach (var item in Model) {
 				<tr>
 					<td>
-						@Html.DisplayFor(modelItem => item.Title)
+						@Html.DisplayFor(modelItem => item.UserName)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.PublishedYear)
+						@Html.DisplayFor(modelItem => item.Password)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.Price)
+						@Html.DisplayFor(modelItem => item.IsActive)
 					</td>
 					<td>
-						@Html.DisplayFor(modelItem => item.AuthorName)
+						@Html.DisplayFor(modelItem => item.Status)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.RoleId)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Guid)
 					</td>
 					<td>
 						<a asp-action="Details" asp-route-id="@item.Id">Details</a>&nbsp;|&nbsp;

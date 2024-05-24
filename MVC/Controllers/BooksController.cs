@@ -19,10 +19,12 @@ namespace MVC.Controllers
     {
         // TODO: Add service injections here
         private readonly IBooksService _bookService;
+        private readonly IAuthorService _authorService;
 
-        public BooksController(IBooksService bookService)
+        public BooksController(IBooksService bookService, IAuthorService authorService)
         {
             _bookService = bookService;
+            _authorService = authorService;
         }
 
         // GET: Books
@@ -35,11 +37,13 @@ namespace MVC.Controllers
         // GET: Books/Details/5
         public IActionResult Details(int id)
         {
-            BookModel book = _bookService.Query().SingleOrDefault(s =>s.Id == id); // TODO: Add get item service logic here
+
+            BookModel book = _bookService.Query().SingleOrDefault(s => s.Id == id); // TODO: Add get item service logic here
             if (book == null)
             {
                 return NotFound();
             }
+            ViewBag.Authors = new SelectList(_authorService.Query(), "Id", "Name");
             return View(book);
         }
 
@@ -48,6 +52,7 @@ namespace MVC.Controllers
         {
             // TODO: Add get related items service logic here to set ViewData if necessary
             //ViewData["AuthorId"] = new SelectList(new List<SelectListItem>(), "Value", "Text");
+            ViewBag.Authors = new SelectList(_authorService.Query(), "Id", "Name");
             return View();
         }
 
@@ -72,6 +77,7 @@ namespace MVC.Controllers
                 //return RedirectToAction(nameof(Index));
             }
             // TODO: Add get related items service logic here to set ViewData if necessary
+            ViewBag.Authors = new SelectList(_authorService.Query(), "Id", "Name");
             //ViewData["AuthorId"] = new SelectList(new List<SelectListItem>(), "Value", "Text");
             return View(book);
         }
@@ -86,6 +92,7 @@ namespace MVC.Controllers
             }
             // TODO: Add get related items service logic here to set ViewData if necessary
             //ViewData["AuthorId"] = new SelectList(new List<SelectListItem>(), "Value", "Text");
+            ViewBag.Authors = new SelectList(_authorService.Query(), "Id", "Name");
             return View(book);
         }
 
@@ -110,6 +117,7 @@ namespace MVC.Controllers
             }
             // TODO: Add get related items service logic here to set ViewData if necessary
             //ViewData["AuthorId"] = new SelectList(new List<SelectListItem>(), "Value", "Text");
+            ViewBag.Authors = new SelectList(_authorService.Query(), "Id", "Name");
             return View(book);
         }
 
@@ -121,6 +129,7 @@ namespace MVC.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Authors = new SelectList(_authorService.Query(), "Id", "Name");
             return View(book);
         }
 
@@ -134,5 +143,6 @@ namespace MVC.Controllers
             // TODO: Add delete service logic here
             return RedirectToAction(nameof(Index));
         }
-	}
+    }
+
 }
